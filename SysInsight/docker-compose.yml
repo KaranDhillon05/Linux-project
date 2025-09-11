@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sysinsight
+    restart: unless-stopped
+    ports:
+      - "5001:5000"
+    environment:
+      - FLASK_ENV=production
+      - SECRET_KEY=${SECRET_KEY:-default-secret-change-me}
+      - METRICS_INTERVAL=5
+      - CPU_WARNING=70
+      - CPU_CRITICAL=85
+      - MEMORY_WARNING=75
+      - MEMORY_CRITICAL=90
+      - DISK_WARNING=80
+      - DISK_CRITICAL=90
+      - ENABLE_ALERTS=true
+      - CORS_ORIGINS=*
+    volumes:
+      - ./logs:/home/app/web/logs:rw
+      - metrics-data:/data:rw
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  metrics-data:
