@@ -1,0 +1,139 @@
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║       SYSINSIGHT - INTERACTIVE WORKLOAD CONTROLLER           ║
+║                  QUICK START GUIDE                           ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+🎯 WHAT YOU HAVE NOW:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Instead of hardcoded programs, you have an INTERACTIVE MENU
+that lets YOU control what runs and when!
+
+
+📋 HOW TO USE:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Step 1: Open Your Dashboard
+----------------------------
+Open this URL in your browser:
+    http://localhost:5001
+
+
+Step 2: Launch the Workload Controller
+---------------------------------------
+Open a terminal and run:
+    cd "/Users/karandhillon/Linux Project/SysInsight"
+    ./launch_workload.sh
+
+Choose option 1 (run inside container)
+
+
+Step 3: Select What You Want to Test
+-------------------------------------
+You'll see a menu with options:
+
+  1. CPU Stress      → Makes CPU usage jump to 10-30%
+  2. Memory Test     → Allocates 100MB of RAM
+  3. Disk I/O        → Performs file operations
+  4. Mixed Workload  → All three at once! (BEST FOR DEMO)
+  5. Show Metrics    → Display current stats
+  6. Custom          → Create your own test
+  7. Exit            → Quit the tool
+
+
+Step 4: Watch Your Dashboard Update
+------------------------------------
+Switch to your browser and watch the graphs change in REAL-TIME!
+
+
+🎬 BEST DEMO FLOW:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Open dashboard (http://localhost:5001)
+2. Run: ./launch_workload.sh
+3. Select option 5 → Show current metrics (low usage)
+4. Select option 1 → CPU stress
+   └─> Switch to browser and point at CPU graph
+5. Select option 4 → Mixed workload (all resources)
+   └─> Switch to browser and show all three graphs
+6. Select option 7 → Exit
+
+
+💡 TWO MONITORING OPTIONS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Option A: Background Simulator (Already Running)
+-------------------------------------------------
+✓ Runs automatically in container
+✓ Creates constant fluctuations
+✓ Good for: Screenshots, continuous monitoring
+✗ Can't control when/what runs
+
+
+Option B: Interactive Menu (New! You Control It)
+-------------------------------------------------
+✓ YOU decide what runs
+✓ YOU decide when it runs
+✓ Perfect timing for presentations
+✓ Specific scenarios (CPU only, Memory only, etc.)
+✓ Good for: LIVE DEMONSTRATIONS
+
+
+🎯 QUICK COMMANDS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# Start dashboard
+docker-compose up -d
+open http://localhost:5001
+
+# Launch workload controller
+./launch_workload.sh
+
+# Or run directly in container
+docker exec -it sysinsight python3 /home/app/web/workload_menu.py
+
+# Check container status
+docker ps
+
+# View logs
+docker logs sysinsight -f
+
+
+📚 FILES CREATED:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ workload_menu.py               - The interactive menu
+✅ launch_workload.sh              - Easy launcher
+✅ INTERACTIVE_WORKLOAD_GUIDE.md   - Complete documentation
+✅ INTERACTIVE_SOLUTION.md         - Solution summary
+✅ HOW_TO_USE.txt                  - This file
+
+
+🎓 FOR YOUR PRESENTATION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This shows you can:
+  ✓ Build interactive CLI applications
+  ✓ Control system resources programmatically
+  ✓ Create professional demo tools
+  ✓ Integrate with Docker containers
+  ✓ Design user-friendly interfaces
+
+
+🚀 YOU'RE READY!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Just run:
+    ./launch_workload.sh
+
+And start generating workloads on demand!
+
+Your graphs will show real-time changes! 📊
+
+
+Need help? Check:
+  - INTERACTIVE_WORKLOAD_GUIDE.md (detailed guide)
+  - INTERACTIVE_SOLUTION.md (solution overview)
+  - DEMO_GUIDE.md (presentation tips)
