@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard">
+    <div class="metrics-grid">
+        <!-- CPU Card -->
+        <div class="metric-card">
+            <div class="metric-header">
+                <h2>CPU Usage</h2>
+                <div class="metric-current">
+                    <span class="value-large" id="cpu-value">--</span>
+                    <span class="value-unit">%</span>
+                </div>
+            </div>
+            <div class="metric-stats">
+                <span>Cores: <strong id="cpu-cores">--</strong></span>
+            </div>
+            <div class="chart-container">
+                <canvas id="cpu-chart"></canvas>
+            </div>
+            <div class="metric-footer">
+                <span id="cpu-updated">Waiting for data...</span>
+            </div>
+        </div>
+
+        <!-- Memory Card -->
+        <div class="metric-card">
+            <div class="metric-header">
+                <h2>Memory Usage</h2>
+                <div class="metric-current">
+                    <span class="value-large" id="memory-value">--</span>
+                    <span class="value-unit">%</span>
+                </div>
+            </div>
+            <div class="metric-stats">
+                <span>Used: <strong id="memory-used">--</strong> GB</span>
+                <span>Total: <strong id="memory-total">--</strong> GB</span>
+            </div>
+            <div class="chart-container">
+                <canvas id="memory-chart"></canvas>
+            </div>
+            <div class="metric-footer">
+                <span id="memory-updated">Waiting for data...</span>
+            </div>
+        </div>
+
+        <!-- Disk Card -->
+        <div class="metric-card">
+            <div class="metric-header">
+                <h2>Disk Usage</h2>
+                <div class="metric-current">
+                    <span class="value-large" id="disk-value">--</span>
+                    <span class="value-unit">%</span>
+                </div>
+            </div>
+            <div class="metric-stats" id="disk-stats">
+                <span>Loading...</span>
+            </div>
+            <div class="chart-container">
+                <canvas id="disk-chart"></canvas>
+            </div>
+            <div class="metric-footer">
+                <span id="disk-updated">Waiting for data...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Banner -->
+    <div id="alert-banner" class="alert-banner" style="display: none;">
+        <div class="alert-content">
+            <span class="alert-icon">⚠️</span>
+            <span class="alert-message" id="alert-message"></span>
+            <button class="alert-close" onclick="closeAlert()">×</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}
